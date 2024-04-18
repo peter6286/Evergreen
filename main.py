@@ -4,13 +4,13 @@ from utils.camera_module import capture_image
 import time
 
 def main():
-    light_sensor = LightSensor()
-    plant_monitor = PlantMonitor()
+    image_path = capture_image()
+    print('captured image path: ',image_path)
+  #  light_sensor = LightSensor()
+   # plant_monitor = PlantMonitor()
     id = 1
-    while True:
+    while False:
         # print('Time: ',id,'Sec')
-        image_path = capture_image()
-        print('captured image path: ',image_path)
         """
             ToDo: embed with the CV program to generate the plant type
         """
