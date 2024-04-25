@@ -5,7 +5,6 @@ import time
 import logging
 from AWSIoTPythonSDK.MQTTLib import AWSIoTMQTTClient
 import json
-import time
 import os
 import torch
 import clip
@@ -13,10 +12,12 @@ from PIL import Image
 import json
 from torchvision.datasets import Flowers102
 import os.path as osp
+from datetime import datetime
+
 
 ca = 'ver_key/AmazonRootCA1.pem'
 private_key = 'ver_key/6228bf39f1582a64a893649a1d0f77eb4de1d7574afcdf38a3953c51437d7aa2-private.pem.key'
-certifcate = '/Users/peterzhu/Desktop/598_EverGreen-1/ver_key/6228bf39f1582a64a893649a1d0f77eb4de1d7574afcdf38a3953c51437d7aa2-certificate.pem.crt'
+certifcate = 'ver_key/6228bf39f1582a64a893649a1d0f77eb4de1d7574afcdf38a3953c51437d7aa2-certificate.pem.crt'
 # For certificate based connection
 myMQTTClient = AWSIoTMQTTClient("test_pi")
 # Update with your AWS IoT endpoint
@@ -79,8 +80,10 @@ def main():
 
         light_sensor = LightSensor()
         plant_monitor = PlantMonitor()
+        now = datetime.now()
+        readable_time = now.strftime('%Y-%m-%d %H:%M:%S')
         payload = {
-            'timestamp': int(time.time()),
+            'timestamp': readable_time,
             'temperature': plant_monitor.get_temp(),
             'humidity': plant_monitor.get_humidity(),     # Simulated humidity
             'light_level': light_sensor.read_light()  # Simulated light level
@@ -90,7 +93,7 @@ def main():
             logging.info("Message published")
         except Exception as e:
             logging.error(f"Failed to publish message: {e}")
-        time.sleep(10)
+        time.sleep(60)
 
 
 if __name__ == '__main__':
