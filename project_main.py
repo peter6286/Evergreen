@@ -61,7 +61,7 @@ def classify_image(image_path, clip_model, clip_preprocess, device, flower_class
     return most_likely_flower, probability
 
 def main():
-    '''
+
     device = "cuda" if torch.cuda.is_available() else 'cpu'
     clip_model, clip_preprocess = clip.load("ViT-B/32", device=device)
     image_path = "/home/pi/Desktop/598_EverGreen/rose.png"
@@ -94,6 +94,9 @@ def main():
         except Exception as e:
             logging.error(f"Failed to publish message: {e}")
         time.sleep(60)
+    '''
+
+
 
 
 if __name__ == '__main__':
