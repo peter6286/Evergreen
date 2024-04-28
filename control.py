@@ -92,10 +92,6 @@ def main():
     now = datetime.now()
     readable_time = now.strftime('%Y-%m-%d %H:%M:%S')
     while True:
-        light_sensor = LightSensor()
-        plant_monitor = PlantMonitor()
-        now = datetime.now()
-        readable_time = now.strftime('%Y-%m-%d %H:%M:%S')
         payload = {
             'Plant':most_likely_flower,
             'timestamp': readable_time,
