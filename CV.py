@@ -3,8 +3,8 @@ from torchvision import models, transforms
 from PIL import Image
 
 def classify_image(image_path, model, preprocess, device):
-    # Define the specific flower names
-    flower_classes = ['Rose', 'Daisy', 'Tulip']  # Three classes
+    # Update the flower classes to four
+    flower_classes = ['Rose', 'Daisy', 'Tulip', 'Sunflower']  # Adding 'Sunflower' to make four classes
     
     image = Image.open(image_path)
     image_input = preprocess(image).unsqueeze(0).to(device)
@@ -22,8 +22,8 @@ def classify_image(image_path, model, preprocess, device):
 def main():
     device = torch.device('cpu')  # Use CPU for compatibility
     model = models.mobilenet_v2(pretrained=True)
-    # Ensure the final classifier layer matches the number of classes
-    model.classifier[1] = torch.nn.Linear(model.classifier[1].in_features, 3)  # Explicitly 3 for three classes
+    # Change the classifier to match four output classes
+    model.classifier[1] = torch.nn.Linear(model.classifier[1].in_features, 4)
     model = model.to(device)
     
     preprocess = transforms.Compose([
