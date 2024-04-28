@@ -24,7 +24,6 @@ myMQTTClient = AWSIoTMQTTClient("test_pi")
 myMQTTClient.configureEndpoint("a31v04gy74znbf-ats.iot.us-east-2.amazonaws.com", 8883)
 myMQTTClient.configureCredentials(ca, private_key,certifcate)
 
-# MQTT client connection setup
 myMQTTClient.connect()
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
