@@ -86,7 +86,7 @@ def main():
             'timestamp': readable_time,
             'temperature': plant_monitor.get_temp(),
             'humidity': plant_monitor.get_humidity(),     # Simulated humidity
-            'light_level': light_sensor.read_light()  # Simulated light level
+            'light level': round(light_sensor.read_light(),3)  # Simulated light level
         }
         try:
             myMQTTClient.publish("topic/plant_health", json.dumps(payload), 0)
