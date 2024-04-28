@@ -3,26 +3,27 @@ from torchvision import models, transforms
 from PIL import Image
 
 def classify_image(image_path, model, preprocess, device):
-    # Define a smaller set of flower names directly in the code
-    flower_classes = ['Rose', 'Daisy', 'Tulip']  # Adjusted to three classes
+    # Define the specific flower names
+    flower_classes = ['Rose', 'Daisy', 'Tulip']  # Three classes
     
     image = Image.open(image_path)
     image_input = preprocess(image).unsqueeze(0).to(device)
     
     with torch.no_grad():
         outputs = model(image_input)
-        _, predicted = outputs.max(1)
-    
-    most_likely_flower = flower_classes[predicted[0]]
-    probability = torch.nn.functional.softmax(outputs, dim=1)[0][predicted[0]].item() * 100
+        probabilities = torch.nn.functional.softmax(outputs, dim=1)
+        top_probability, top_class = probabilities.topk(1, dim=1)
+
+    most_likely_flower = flower_classes[top_class[0][0]]
+    probability = top_probability[0][0].item() * 100
     
     return most_likely_flower, probability
 
 def main():
     device = torch.device('cpu')  # Use CPU for compatibility
     model = models.mobilenet_v2(pretrained=True)
-    # Adjust the number of classes to 3 in the final classifier layer
-    model.classifier[1] = torch.nn.Linear(model.classifier[1].in_features, 3)
+    # Adjust the classifier to match the number of classes
+    model.classifier[1] = torch.nn.Linear(model.classifier[1].in_features, len(['Rose', 'Daisy', 'Tulip']))
     model = model.to(device)
     
     preprocess = transforms.Compose([
