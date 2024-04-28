@@ -38,7 +38,7 @@ def classify_image(image_path, clip_model, clip_preprocess, device):
 
 def main():
     device = "cuda" if torch.cuda.is_available() else 'cpu'
-    clip_model, clip_preprocess = clip.load("ViT-B/32", device=device)
+    clip_model, clip_preprocess = clip.load("ViT-B/16", device=device)
     
     # Image path for classification
     image_path = "/home/pi/Desktop/598_EverGreen/rose.png"
