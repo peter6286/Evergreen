@@ -22,8 +22,8 @@ def classify_image(image_path, model, preprocess, device):
 def main():
     device = torch.device('cpu')  # Use CPU for compatibility
     model = models.mobilenet_v2(pretrained=True)
-    # Adjust the classifier to match the number of classes
-    model.classifier[1] = torch.nn.Linear(model.classifier[1].in_features, len(['Rose', 'Daisy', 'Tulip']))
+    # Ensure the final classifier layer matches the number of classes
+    model.classifier[1] = torch.nn.Linear(model.classifier[1].in_features, 3)  # Explicitly 3 for three classes
     model = model.to(device)
     
     preprocess = transforms.Compose([
