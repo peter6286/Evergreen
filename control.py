@@ -77,6 +77,7 @@ def customCallback(client, userdata, message):
         logging.info("Pump operation completed")
 
 def main():
+    '''
     device = "cuda" if torch.cuda.is_available() else 'cpu'
     clip_model, clip_preprocess = clip.load("ViT-B/32", device=device)
     image_path = "/home/pi/Desktop/598_EverGreen/rose.png"
@@ -85,7 +86,7 @@ def main():
     print('Captured image path:', image_path)
     most_likely_flower, probability = classify_image(image_path, clip_model, clip_preprocess, device, flower_classes)
     print(f'Identified Plant Type: {most_likely_flower} with a probability of {probability:.2f}%')
-    
+    '''
     myMQTTClient.subscribe("topic/command", 1, customCallback)
     light_sensor = LightSensor()
     plant_monitor = PlantMonitor()
@@ -93,7 +94,6 @@ def main():
     readable_time = now.strftime('%Y-%m-%d %H:%M:%S')
     while True:
         payload = {
-            'Plant':most_likely_flower,
             'timestamp': readable_time,
             'temperature': plant_monitor.get_temp(),
             'humidity': plant_monitor.get_humidity(),     # Simulated humidity
