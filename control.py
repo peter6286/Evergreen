@@ -21,7 +21,7 @@ stack_level = 0  # Adjust based on your jumper settings
 relay_number = 5  # Relay connected to the water pump
 datadir = "/home/pi/Desktop/598_EverGreen"
 image_path = osp.join(datadir, "rose.png")
-
+'''
 # Define expanded flower classes
 flower_classes = ['tulip', 'daisy', 'sunflower','daffodil','rose']
 
@@ -37,7 +37,7 @@ transform = transforms.Compose([
     transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]),  # Normalization for MobileNet
 ])
 
-
+'''
 # Create and configure the MQTT client
 myMQTTClient = AWSIoTMQTTClient("test_pi")
 myMQTTClient.configureEndpoint("a31v04gy74znbf-ats.iot.us-east-2.amazonaws.com", 8883)
