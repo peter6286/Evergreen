@@ -7,10 +7,10 @@ from AWSIoTPythonSDK.MQTTLib import AWSIoTMQTTClient
 import json
 from datetime import datetime
 import lib8relind
-#import torch
-#import torchvision.models as models
-#import torchvision.transforms as transforms
-#from PIL import Image
+import torch
+import torchvision.models as models
+import torchvision.transforms as transforms
+from PIL import Image
 import os.path as osp
 
 # Paths to the certificate files
@@ -21,7 +21,7 @@ stack_level = 0  # Adjust based on your jumper settings
 relay_number = 5  # Relay connected to the water pump
 datadir = "/home/pi/Desktop/598_EverGreen"
 image_path = osp.join(datadir, "rose.png")
-'''
+
 # Define expanded flower classes
 flower_classes = ['tulip', 'daisy', 'sunflower','daffodil','rose']
 
@@ -37,7 +37,7 @@ transform = transforms.Compose([
     transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]),  # Normalization for MobileNet
 ])
 
-'''
+
 # Create and configure the MQTT client
 myMQTTClient = AWSIoTMQTTClient("test_pi")
 myMQTTClient.configureEndpoint("a31v04gy74znbf-ats.iot.us-east-2.amazonaws.com", 8883)
@@ -76,11 +76,10 @@ def customCallback(client, userdata, message):
         logging.info("Pump operation completed")
 
 def main():
-    '''
+
     predicted_class = classify_image(image_path, model, transform)
     print(f'Predicted Flower Type: {predicted_class}')
     
-    '''
     myMQTTClient.subscribe("topic/command", 1, customCallback)
     light_sensor = LightSensor()
     plant_monitor = PlantMonitor()
@@ -99,7 +98,7 @@ def main():
             logging.info("Sensor data published")
         except Exception as e:
             logging.error(f"Failed to publish sensor data: {e}")
-        time.sleep(60)
+        time.sleep(1200)
 
 if __name__ == '__main__':
     try:
