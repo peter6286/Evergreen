@@ -7,10 +7,10 @@ from AWSIoTPythonSDK.MQTTLib import AWSIoTMQTTClient
 import json
 from datetime import datetime
 import lib8relind
-import torch
-import torchvision.models as models
-import torchvision.transforms as transforms
-from PIL import Image
+#import torch
+#import torchvision.models as models
+#import torchvision.transforms as transforms
+#from PIL import Image
 import os.path as osp
 
 # Paths to the certificate files
@@ -99,7 +99,7 @@ def main():
             logging.info("Sensor data published")
         except Exception as e:
             logging.error(f"Failed to publish sensor data: {e}")
-        time.sleep(2400)
+        time.sleep(60)
 
 if __name__ == '__main__':
     try:
