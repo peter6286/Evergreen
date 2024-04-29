@@ -19,7 +19,18 @@ Execute the main script using Python 3. Make sure you are in the project directo
 python3 main.py
 ```
 
+### Step 3: Runing front end
+```bash
+cd FrontEnd
+cd Public
+http-server
+```
 
+### Step 4: Hosting Backend 
+```bash
+cd FrontEnd
+node server.js
+```
 ### Additional Notes:
 
 - **Camera Capture**: currently the code is design to capture a photo and save it into the same directory and with timestamp in the file name.
