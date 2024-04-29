@@ -79,6 +79,7 @@ def main():
     '''
     predicted_class = classify_image(image_path, model, transform)
     print(f'Predicted Flower Type: {predicted_class}')
+    
     '''
     myMQTTClient.subscribe("topic/command", 1, customCallback)
     light_sensor = LightSensor()
