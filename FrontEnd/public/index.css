@@ -1,0 +1,100 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f4f8; /* Adjust the background color as needed */
+}
+h1 {
+    text-align: center; /* Center text horizontally */
+    margin-top: 20px; /* Add space on the top if needed */
+    margin-bottom: 20px; /* Add space on the bottom if needed */
+}
+
+
+.data-container {
+    text-align: center;
+    padding: 20px;
+}
+
+.data-bubble {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin: 10px;
+    width: 120px; /* Adjust size as needed */
+    height: 120px;
+    border-radius: 50%; /* Makes the bubble circular */
+    background-color: #87CEEB; /* Adjust the background color as needed */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+    font-weight: bold;
+    color: #333;
+    transition: transform 0.3s ease;
+}
+
+.data-bubble:hover {
+    transform: scale(1.1); /* Slight enlargement on hover for interactive effect */
+}
+
+.data-title {
+    font-size: 14px;
+    color: #fff;
+    margin-bottom: 5px;
+}
+
+.data-value {
+    font-size: 18px;
+    color: #fff;
+}
+
+h2 {
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.schedule-card {
+    background: linear-gradient(to right top, #6a5acd, #836fff, #7b68ee, #6a5acd); /* Shades of blue and purple */
+    border-radius: 15px; /* Rounded corners */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+    padding: 20px;
+    max-width: 300px; /* Adjust as needed */
+    margin: 20px auto;
+    color: white; /* White text */
+    text-align: center;
+}
+
+.schedule-title {
+    font-size: 1.5em; /* Stylish, readable font */
+    margin-bottom: 10px;
+}
+
+.schedule-time {
+    font-size: 2em; /* Larger font size */
+    font-weight: bold; /* Bold for the time */
+}
+
+.water-now-btn {
+    background-image: linear-gradient(to right, #6a5acd, #836fff); /* Gradient background */
+    color: white; /* Text color */
+    border: none; /* No border */
+    border-radius: 30px; /* Rounded edges */
+    padding: 15px 30px; /* Padding inside the button */
+    font-size: 16px; /* Text size */
+    font-weight: bold; /* Text weight */
+    cursor: pointer; /* Pointer cursor on hover */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+    transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s; /* Smooth transition for hover effects */
+    margin-top: 20px; /* Spacing from the card above */
+    outline: none; /* Remove the outline to maintain the design aesthetic */
+}
+
+.water-now-btn:hover, .water-now-btn:focus {
+    transform: translateY(-3px); /* Slightly raise the button */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Enhanced shadow to indicate elevation */
+    background-image: linear-gradient(to right, #7b68ee, #9370db); /* Slightly different gradient for hover state */
+}
+.button-container {
+    display: flex;
+    justify-content: center; /* Centers button horizontally */
+    align-items: center; /* Centers button vertically if needed */
+    margin: 20px 0; /* Spacing above and below the button */
+}
