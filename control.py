@@ -71,7 +71,7 @@ def customCallback(client, userdata, message):
     if command == 'start_pump':
         logging.info("Received command to start the pump")
         lib8relind.set(stack_level, relay_number, 1)
-        time.sleep(5)  # Pump runs for 5 seconds
+        time.sleep(1)  # Pump runs for 5 seconds
         lib8relind.set(stack_level, relay_number, 0)
         logging.info("Pump operation completed")
 
@@ -97,7 +97,7 @@ def main():
             logging.info("Sensor data published")
         except Exception as e:
             logging.error(f"Failed to publish sensor data: {e}")
-        time.sleep(60)
+        time.sleep(2400)
 
 if __name__ == '__main__':
     try:
