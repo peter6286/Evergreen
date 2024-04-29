@@ -23,7 +23,7 @@ datadir = "/home/pi/Desktop/598_EverGreen"
 image_path = osp.join(datadir, "rose.png")
 
 # Define expanded flower classes
-flower_classes = ['rose', 'tulip', 'daisy', 'sunflower', 'daffodil']
+flower_classes = ['tulip', 'daisy', 'sunflower','daffodil','rose']
 
 # Load a more lightweight model, e.g., MobileNetV2
 model = models.mobilenet_v2(pretrained=True)
@@ -86,6 +86,7 @@ def main():
     readable_time = now.strftime('%Y-%m-%d %H:%M:%S')
     while True:
         payload = {
+            'plant':"Green Onion",
             'timestamp': readable_time,
             'temperature': plant_monitor.get_temp(),
             'humidity': plant_monitor.get_humidity(),     # Simulated humidity
