@@ -76,9 +76,10 @@ def customCallback(client, userdata, message):
         logging.info("Pump operation completed")
 
 def main():
+    '''
     predicted_class = classify_image(image_path, model, transform)
     print(f'Predicted Flower Type: {predicted_class}')
-
+    '''
     myMQTTClient.subscribe("topic/command", 1, customCallback)
     light_sensor = LightSensor()
     plant_monitor = PlantMonitor()
@@ -90,7 +91,7 @@ def main():
             'timestamp': readable_time,
             'temperature': plant_monitor.get_temp(),
             'humidity': plant_monitor.get_humidity(),     # Simulated humidity
-            'light_level': round(light_sensor.read_light(),3)  # Simulated light level
+            'light_level': round(light_sensor.read_light(),3) 
         }
         try:
             myMQTTClient.publish("topic/plant_health", json.dumps(payload), 0)
