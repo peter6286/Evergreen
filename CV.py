@@ -8,18 +8,19 @@ import os.path as osp
 datadir = "/home/pi/Desktop/598_EverGreen"
 image_path = osp.join(datadir, "rose.png")
 
-# Define simplified flower classes
-flower_classes = ['rose', 'tulip', 'daisy']
+# Define expanded flower classes
+flower_classes = ['rose', 'tulip', 'daisy', 'sunflower', 'daffodil']
 
 # Load a more lightweight model, e.g., MobileNetV2
 model = models.mobilenet_v2(pretrained=True)
 model.eval()  # Set the model to inference mode
 
-# Define a simple transformation
+# Optimize and enhance image transformations
 transform = transforms.Compose([
-    transforms.Resize(128),  # Smaller image size
-    transforms.CenterCrop(128),
+    transforms.Resize(256),  # Increase slightly for better feature extraction
+    transforms.CenterCrop(224),  # Standard size for MobileNet
     transforms.ToTensor(),
+    transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]),  # Normalization for MobileNet
 ])
 
 def classify_image(image_path, model, transform):
@@ -31,9 +32,10 @@ def classify_image(image_path, model, transform):
     # Inference
     with torch.no_grad():
         outputs = model(image)
-    # Get the prediction (for simplification, assume classes are the top categories)
+    # Get the prediction (simplified mapping to limited classes)
     _, predicted = torch.max(outputs, 1)
-    predicted_class = flower_classes[predicted[0] % len(flower_classes)]  # Modulo to limit to defined classes
+    predicted_class_index = predicted[0] % len(flower_classes)  # Modulo to limit to defined classes
+    predicted_class = flower_classes[predicted_class_index]
 
     return predicted_class
 
