@@ -9,7 +9,6 @@ from PIL import Image
 import json
 from torchvision.datasets import Flowers102
 import os.path as osp
-from datetime import datetime
 
 datadir = "/home/pi/Desktop/598_project"
 
@@ -57,3 +56,17 @@ def main():
 
 if __name__ == '__main__':
     main()
+    # First, install the dependencies
+sudo apt-get install libjpeg-dev zlib1g-dev libpython3-dev libavcodec-dev libavformat-dev libswscale-dev
+
+# Get the source code of torchvision
+git clone https://github.com/pytorch/vision.git
+cd vision
+
+# Check out the right branch that is compatible with your PyTorch installation
+# For example, if you have PyTorch 1.9, checkout a branch for torchvision that works with it
+git checkout v0.11.0
+
+# Install
+python setup.py install
+
