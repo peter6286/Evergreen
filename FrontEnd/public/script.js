@@ -16,6 +16,7 @@ document.addEventListener('DOMContentLoaded', fetchData); // Fetch data when the
                 document.getElementById('dataDisplay').innerHTML = `Error: ${error.message}`;
             }
         }
+
         function displayData(data) {
             const display = document.getElementById('dataDisplay');
             display.innerHTML = '<h2>Current Data</h2>'; // Add a title
@@ -70,7 +71,11 @@ document.addEventListener('DOMContentLoaded', fetchData); // Fetch data when the
 
         // Initial call
         updateScheduleTime();
+
         
+        setInterval(fetchData, 6000000); 
+        
+        fetchData()
         // Update the time every minute in case the page is left open
         setInterval(updateScheduleTime, 60 * 1000);
         
