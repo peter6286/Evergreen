@@ -86,9 +86,10 @@ def main():
     now = datetime.now()
     readable_time = now.strftime('%Y-%m-%d %H:%M:%S')
     while True:
+        # print(datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
         payload = {
             'plant':"Green Onion",
-            'timestamp': readable_time,
+            'timestamp': datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
             'temperature': plant_monitor.get_temp(),
             'humidity': plant_monitor.get_humidity(),     # Simulated humidity
             'light_level': round(light_sensor.read_light(),3) 
@@ -96,6 +97,7 @@ def main():
         try:
             myMQTTClient.publish("topic/plant_health", json.dumps(payload), 0)
             logging.info("Sensor data published")
+            print("sensor data: ",payload)
         except Exception as e:
             logging.error(f"Failed to publish sensor data: {e}")
         time.sleep(1200)
