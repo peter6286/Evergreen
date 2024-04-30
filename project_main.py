@@ -56,20 +56,21 @@ def main():
 
 if __name__ == '__main__':
     main()
-    # First, install the dependencies
-sudo apt-get install libjpeg-dev zlib1g-dev libpython3-dev libavcodec-dev libavformat-dev libswscale-dev
+ # get a fresh start
+$ sudo apt-get update
+$ sudo apt-get upgrade
+# install the dependencies (if not already onboard)
+$ sudo apt-get install python3-pip libjpeg-dev libopenblas-dev libopenmpi-dev libomp-dev
+# above 58.3.0 you get version issues
+$ sudo -H pip3 install setuptools==58.3.0
+$ sudo -H pip3 install Cython
+# install gdown to download from Google drive
+$ sudo -H pip3 install gdown
 
-# Get the source code of torchvision
-git clone https://github.com/pytorch/vision.git
-cd vision
-
-# Check out the right branch that is compatible with your PyTorch installation
-# For example, if you have PyTorch 1.9, checkout a branch for torchvision that works with it
-git checkout v0.11.0
-
-# Install
-python setup.py install
-
-
-sudo apt install libopenblas-dev libblas-dev m4 cmake cython python3-dev python3-yaml python3-setuptools
-pip3 install torch torchvision
+Only Bullseye
+# download the wheel
+$ gdown https://drive.google.com/uc?id=1mPlhwM47Ub3SwQyufgFj3JJ9oB_wrU5D
+# install PyTorch 2.0
+$ sudo -H pip3 install torch-2.0.0a0+gite9ebda2-cp39-cp39-linux_aarch64.whl
+# clean up
+$ rm torch-2.0.0a0+gite9ebda2-cp39-cp39-linux_aarch64.whl
