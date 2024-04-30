@@ -70,3 +70,6 @@ git checkout v0.11.0
 # Install
 python setup.py install
 
+
+sudo apt install libopenblas-dev libblas-dev m4 cmake cython python3-dev python3-yaml python3-setuptools
+pip3 install torch torchvision
