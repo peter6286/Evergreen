@@ -31,6 +31,16 @@ http-server
 cd FrontEnd
 node server.js
 ```
+
+
+### Step 5: To use cv 
+```bash
+libcamera-jpeg -o plant.jpg
+source myenv/bin/activate
+python project_main.py
+```
+
+
 ### Additional Notes:
 
 - **Camera Capture**: currently the code is design to capture a photo and save it into the same directory and with timestamp in the file name.
