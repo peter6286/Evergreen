@@ -1,6 +1,3 @@
-from utils.light_sensor import LightSensor
-from utils.plant_monitor import PlantMonitor
-from utils.camera_module import capture_image
 import json
 import os
 import torch
@@ -10,7 +7,7 @@ import json
 from torchvision.datasets import Flowers102
 import os.path as osp
 
-datadir = "/home/pi/Desktop/598_project"
+datadir = "/home/pi/Desktop/cv"
 
 def load_flower_data(img_transform=None):
     if os.path.isdir(datadir + "/flowers-102"):
@@ -45,7 +42,7 @@ def main():
 
     device = "cuda" if torch.cuda.is_available() else 'cpu'
     clip_model, clip_preprocess = clip.load("ViT-B/32", device=device)
-    image_path = "/home/pi/Desktop/598_EverGreen/rose.png"
+    image_path = "/home/pi/Desktop/cv/Rose.jpg"
     flower_train, flower_test, flower_classes = load_flower_data()
     
     print('Captured image path:', image_path)
@@ -56,21 +53,3 @@ def main():
 
 if __name__ == '__main__':
     main()
- # get a fresh start
-$ sudo apt-get update
-$ sudo apt-get upgrade
-# install the dependencies (if not already onboard)
-$ sudo apt-get install python3-pip libjpeg-dev libopenblas-dev libopenmpi-dev libomp-dev
-# above 58.3.0 you get version issues
-$ sudo -H pip3 install setuptools==58.3.0
-$ sudo -H pip3 install Cython
-# install gdown to download from Google drive
-$ sudo -H pip3 install gdown
-
-Only Bullseye
-# download the wheel
-$ gdown https://drive.google.com/uc?id=1mPlhwM47Ub3SwQyufgFj3JJ9oB_wrU5D
-# install PyTorch 2.0
-$ sudo -H pip3 install torch-2.0.0a0+gite9ebda2-cp39-cp39-linux_aarch64.whl
-# clean up
-$ rm torch-2.0.0a0+gite9ebda2-cp39-cp39-linux_aarch64.whl
